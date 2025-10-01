@@ -88,13 +88,21 @@ class RocketConfigurable:
         # Apply kernels -> always get ppv, mean, max
         full_features = _apply_kernels_ppv_mean_max(X, self.kernels)
         
-        # Select what to return based on configuration
+        # Using slicing to get features that are requested
+        ppv = full_features[:, 0::3]
+        mean = full_features[:, 1::3]
+        max_ = full_features[:, 2::3]
+
         if self.features == 'ppv':
-            result = full_features[:, ::3]  
+            result = ppv
         elif self.features == 'ppv+mean':
-            result = full_features[:, np.r_[0::3, 1::3]]  # ppv + mean
-        else: 
-            result = full_features[:, np.r_[0::3, 2::3]]  # ppv + max (original ROCKET)
+            result = np.empty((full_features.shape[0], self.num_kernels * 2), dtype=full_features.dtype)
+            result[:, 0::2] = ppv
+            result[:, 1::2] = mean
+        else:  # ppv+max, the original 
+            result = np.empty((full_features.shape[0], self.num_kernels * 2), dtype=full_features.dtype)
+            result[:, 0::2] = ppv
+            result[:, 1::2] = max_
         
         return pd.DataFrame(result)
     
@@ -257,7 +265,8 @@ def _apply_kernels_ppv_mean_max(X, kernels):
     n_instances, n_columns, _ = X.shape
     num_kernels = len(lengths)
 
-    _X = np.zeros((n_instances, num_kernels * 2), dtype=np.float32)
+    _X = np.zeros((n_instances, num_kernels * 3), dtype=np.float32)
+
 
     # Looping through each sample
     for i in prange(n_instances):
@@ -282,7 +291,7 @@ def _apply_kernels_ppv_mean_max(X, kernels):
                     num_channel_indices[j],
                     channel_indices[a2:b2],
                 )
-            _X[i, a3:b3] = ppv, mean, max_val
+            _X[i, a3:b3] = (ppv, mean, max_val)
 
             a1 = b1
             a2 = b2
