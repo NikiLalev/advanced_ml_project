@@ -180,3 +180,5 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
+
+requirements_anna.txt
