@@ -95,6 +95,8 @@ class RocketConfigurable:
 
         if self.features == 'ppv':
             result = ppv
+        elif self.features == 'max':
+            result = max_
         elif self.features == 'ppv+mean':
             result = np.empty((full_features.shape[0], self.num_kernels * 2), dtype=full_features.dtype)
             result[:, 0::2] = ppv
