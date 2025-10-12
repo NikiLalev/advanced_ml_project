@@ -36,7 +36,7 @@ class RocketConfigurable:
         self.n_columns = None
         
         # Validate features parameter
-        valid_features = ['ppv', 'ppv+mean', 'ppv+max']
+        valid_features = ['ppv', 'max', 'ppv+mean', 'ppv+max']
         if features not in valid_features:
             raise ValueError(f"features must be one of {valid_features}, got '{features}'")
     
