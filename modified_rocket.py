@@ -9,6 +9,7 @@ class RocketConfigurable:
     
     Based on sktime's implementation but allows choosing which features to extract:
     - 'ppv': Proportion of Positive Values only
+    - 'max': Max only
     - 'ppv+mean': PPV and Mean
     - 'ppv+max': PPV and Max (original ROCKET)
     
@@ -17,7 +18,7 @@ class RocketConfigurable:
     num_kernels : int, default=10000
         Number of random convolutional kernels
     features : str, default='ppv+max'
-        Which features to extract. Options: 'ppv', 'ppv+mean', 'ppv+max'
+        Which features to extract. Options: 'ppv', 'max, ''ppv+mean', 'ppv+max'
     normalise : bool, default=True
         Whether to normalize input time series per instance
     n_jobs : int, default=1
@@ -170,7 +171,7 @@ def _generate_kernels(n_timepoints, num_kernels, n_columns, seed):
 
         weights[a1:b1] = _weights
 
-        # Storing the actual indices of channels that the kernel will interct with
+        # Storing the actual indices of channels that the kernel will interact with
         channel_indices[a2:b2] = np.random.choice(
             np.arange(0, n_columns), _num_channel_indices, replace=False
         )
