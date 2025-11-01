@@ -1,0 +1,121 @@
+{
+    "experiment_name": "cv_search_U3_V15_s200",
+    "config": {
+        "U": 3,
+        "V": 15,
+        "K": 1,
+        "s": 200
+    },
+    "cv_results": {
+        "config": {
+            "U": 3,
+            "V": 15,
+            "K": 1,
+            "s": 200
+        },
+        "k_folds": 3,
+        "mean_accuracy": 0.8740740740740741,
+        "std_accuracy": 0.020951312035156943,
+        "fold_accuracies": [
+            0.8444444444444444,
+            0.8888888888888888,
+            0.8888888888888888
+        ],
+        "fold_results": [
+            {
+                "fold": 1,
+                "accuracy": 0.8444444444444444,
+                "train_size": 180,
+                "val_size": 90,
+                "train_speaker_dist": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                ],
+                "val_speaker_dist": [
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10
+                ],
+                "fit_time": 24.139339208602905,
+                "predict_time": 3.6659369468688965
+            },
+            {
+                "fold": 2,
+                "accuracy": 0.8888888888888888,
+                "train_size": 180,
+                "val_size": 90,
+                "train_speaker_dist": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                ],
+                "val_speaker_dist": [
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10
+                ],
+                "fit_time": 13.269033908843994,
+                "predict_time": 3.5320191383361816
+            },
+            {
+                "fold": 3,
+                "accuracy": 0.8888888888888888,
+                "train_size": 180,
+                "val_size": 90,
+                "train_speaker_dist": [
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
+                ],
+                "val_speaker_dist": [
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10,
+                    10
+                ],
+                "fit_time": 33.93054676055908,
+                "predict_time": 4.298333168029785
+            }
+        ],
+        "random_state": 42
+    },
+    "evaluation_method": "cv_only",
+    "cv_folds": 3,
+    "timestamp": "2025-10-22T15:19:56.192012"
+}
